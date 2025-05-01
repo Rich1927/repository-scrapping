@@ -25,4 +25,6 @@ class DivannewparsSpider(scrapy.Spider):
                     # Создаём словарик ссылок, используем поиск по тегу "a", а внутри тега — по атрибуту
                     # Атрибуты — это настройки тегов
                     'url': divan.css('a').attrib['href']
+
                       }
+

@@ -1,4 +1,5 @@
 import scrapy
+from scrapy.crawler import CrawlerProcess
 
 class DivanLightsSpider(scrapy.Spider):
     name = "divanlights"
@@ -20,5 +21,14 @@ class DivanLightsSpider(scrapy.Spider):
         if next_page:
             yield response.follow(next_page, callback=self.parse)
 
-# заходим в папку с проектом cd divanpars
-# запуск в терминале : scrapy crawl divanlights -o lights.json
+# Запуск паука и сохранение в JSON и CSV
+process = CrawlerProcess(settings={
+    'FEEDS': {
+        'lights.json': {'format': 'json', 'encoding': 'utf8'},
+        'lights.csv': {'format': 'csv', 'encoding': 'utf8'},
+    }
+})
+
+process.crawl(DivanLightsSpider)
+process.start()
+# запуск python divanlightscsv.py
