@@ -31,4 +31,5 @@ process = CrawlerProcess(settings={
 
 process.crawl(DivanLightsSpider)
 process.start()
+# открыть папку с файлом D:\DocumentsGitHub\GitHub\repository-scrapping\divanpars\divanpars\spiders
 # запуск python divanlightscsv.py
